@@ -1,32 +1,32 @@
-const AdminBro = require("admin-bro");
-const AdminBroExpress = require("admin-bro-expressjs");
-const AdminBroMongoose = require("admin-bro-mongoose");
+import AdminBro from "admin-bro";
+import { buildAuthenticatedRouter } from "admin-bro-expressjs";
+import AdminBroMongoose from "admin-bro-mongoose";
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
-const Models = require("../models/index.model");
-const config = require("../config");
+import { models } from "../models/index.model";
+import { COMPANY_NAME, COOKIE_NAME, COOKIE_PASSWORD, ADMIN } from "../config";
 
 const adminBro = new AdminBro({
-  resources: Models.models,
+  resources: models,
   rootPath: "/admin",
   logoutPath: "/admin/logout",
   loginPath: "/admin/login",
   branding: {
-    companyName: config.COMPANY_NAME,
+    companyName: COMPANY_NAME,
     softwareBrothers: false
   }
 });
 
-const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
-  cookieName: config.COOKIE_NAME,
-  cookiePassword: config.COOKIE_PASSWORD,
+const router = buildAuthenticatedRouter(adminBro, {
+  cookieName: COOKIE_NAME,
+  cookiePassword: COOKIE_PASSWORD,
   authenticate: async (email, password) => {
-    if (email === config.ADMIN.email && password === config.ADMIN.password) {
-      return config.ADMIN;
+    if (email === ADMIN.email && password === ADMIN.password) {
+      return ADMIN;
     }
     return null;
   }
 });
 
-module.exports = router;
+export default router;

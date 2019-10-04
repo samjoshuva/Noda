@@ -1,10 +1,8 @@
-const express = require("express");
+import express from "express";
+import compression from "compression";
+
 const app = express();
 
-app.use((req, res, next) => {
-    console.log(` ${req.method}    ${req.path}     ${new Date().toISOString()} `);
-    next();
-});
+app.use(compression());
 
-
-module.exports = app;
+export default app;

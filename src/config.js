@@ -1,4 +1,5 @@
 module.exports = {
+  APP_NAME: "TEST",
   DBCONNECTIONURI: `mongodb://localhost:27017/test`,
   PORT: 3000,
   ADMIN: {
