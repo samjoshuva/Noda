@@ -1,21 +1,18 @@
-import app from "./src/helper/app";
-import db from "./src/helper/db";
+import app from "./server/app";
+import { connect } from "./server/db";
 import { DBCONNECTIONURI, PORT } from "./src/config";
-import express from "express";
-import path from "path";
 
-app.use(express.static("public"));
 // Initialize routes
-import "./src/routes/index.route";
+import "./src/urls";
 
-// function to start application
+// Function to start application
 const run = async () => {
-  await db.connect(DBCONNECTIONURI);
+  require("./server/db");
 
   app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
   });
 };
 
-// fire up application
+// Fire up application
 run();

@@ -1,12 +1,10 @@
 import React from "react";
-
+// import "../static/css/app.css";
 function App() {
-  const start = "Start Working";
   return (
     <div>
       <div className="app">
-        <h1 className="text-center header">{start}</h1>
-        <pre> start editing inside src/ </pre>
+        Customize dashboard in <pre> views/components/ </pre>
       </div>
     </div>
   );
