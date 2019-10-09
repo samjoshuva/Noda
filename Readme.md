@@ -22,6 +22,9 @@ Manage your project with manage.js file
 
     node start
 
+**config.js**
+this file holds all configurations for project.
+
 ## Features
 
 - CRUD any data in any resource
