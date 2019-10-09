@@ -22,6 +22,8 @@ Manage your project with manage.js file
 
     node start
 
+check out http://localhost:3000/admin
+
 **config.js**
 this file holds all configurations for project.
 
